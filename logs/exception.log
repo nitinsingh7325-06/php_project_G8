@@ -1,0 +1,13 @@
+[2026-08-08 00:31:40] EXCEPTION: ErrorException in C:\xampp\htdocs\wave\app\Core\Router.php:90
+#0 C:\xampp\htdocs\wave\app\Core\Router.php(90): App\Core\Application->handleError(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\wave\app\Core\Application.php(98): App\Core\Router->dispatch('GET', '/wave/public')
+#2 C:\xampp\htdocs\wave\public\index.php(120): App\Core\Application->run()
+#3 {main}
+
+[2026-08-08 00:35:23] EXCEPTION: ErrorException in C:\xampp\htdocs\wave\app\Core\Router.php:90
+#0 C:\xampp\htdocs\wave\app\Core\Router.php(90): App\Core\Application->handleError(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\wave\app\Core\Application.php(98): App\Core\Router->dispatch('GET', '/wave/public')
+#2 C:\xampp\htdocs\wave\public\index.php(120): App\Core\Application->run()
+#3 C:\xampp\htdocs\wave\scripts\smoke_home.php(9): require('C:\\xampp\\htdocs...')
+#4 {main}
+
