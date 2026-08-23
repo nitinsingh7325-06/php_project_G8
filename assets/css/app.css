@@ -1,0 +1,569 @@
+/* The Wave Men's Salon — Luxury Black & Gold */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #121212;
+  --bg-elevated: #1a1a1a;
+  --gold: #D4AF37;
+  --gold-light: #E8D48B;
+  --gold-dim: rgba(212, 175, 55, 0.25);
+  --text: #F5F5F5;
+  --muted: #A0A0A0;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(212, 175, 55, 0.22);
+  --danger: #e74c3c;
+  --success: #2ecc71;
+  --radius: 16px;
+  --sidebar-w: 260px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(212,175,55,0.08), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(212,175,55,0.05), transparent 40%);
+}
+
+body.salon-bg {
+  background:
+    linear-gradient(rgba(18, 18, 18, 0.82), rgba(18, 18, 18, 0.9)),
+    url('../img/salon-bg.png') center/cover fixed no-repeat;
+  background-color: var(--bg);
+}
+
+a { color: var(--gold); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--gold-light); }
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), #b8942d);
+  color: #121212 !important;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.35);
+  color: #121212 !important;
+}
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.btn-outline-gold:hover {
+  background: var(--gold-dim);
+  color: var(--gold-light) !important;
+}
+
+.navbar-wave {
+  background: rgba(18,18,18,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 0.85rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+.navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--gold) !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.nav-link {
+  color: var(--muted) !important;
+  font-weight: 450;
+  margin: 0 0.35rem;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active { color: var(--gold) !important; }
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(105deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.55) 45%, rgba(18,18,18,0.72) 100%),
+    url('../img/salon-bg.png') center/cover no-repeat;
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; }
+.hero-brand {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--gold);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  animation: fadeUp .9s ease both;
+}
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  animation: fadeUp 1s ease .15s both;
+}
+.hero-cta { animation: fadeUp 1s ease .3s both; }
+.hero-glow {
+  position: absolute;
+  width: 420px; height: 420px;
+  right: -60px; top: 20%;
+  background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+  animation: pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.section { padding: 5rem 0; }
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.section-sub { color: var(--muted); margin-bottom: 2.5rem; max-width: 520px; }
+
+.service-card, .staff-card, .review-card {
+  padding: 1.5rem;
+  height: 100%;
+  transition: transform .25s, border-color .25s;
+}
+.service-card:hover, .staff-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+.price-tag {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.stars { color: var(--gold); letter-spacing: 2px; }
+
+html, body, select, input, textarea, button, .form-control, .form-select {
+  color-scheme: dark;
+}
+
+select option, .form-select option {
+  background-color: #1a1a1a !important;
+  color: #F5F5F5 !important;
+  padding: 10px 14px;
+}
+
+select option:hover, select option:focus, select option:checked,
+.form-select option:hover, .form-select option:focus, .form-select option:checked {
+  background-color: var(--gold) !important;
+  color: #121212 !important;
+}
+
+.dropdown-menu {
+  background-color: #1a1a1a !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+
+.dropdown-item {
+  color: #F5F5F5 !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--gold-dim) !important;
+  color: var(--gold) !important;
+}
+
+.form-control, .form-select {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text) !important;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px var(--gold-dim) !important;
+  background: rgba(255,255,255,0.09) !important;
+  color: var(--text) !important;
+}
+.form-label { color: var(--muted); font-size: 0.9rem; }
+.form-control::placeholder { color: #666; }
+
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(105deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.55) 45%, rgba(18,18,18,0.72) 100%),
+    url('../img/salon-bg.png') center/cover no-repeat fixed;
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.app-shell { display: flex; min-height: 100vh; }
+.sidebar {
+  width: var(--sidebar-w);
+  background: rgba(18,18,18,0.95);
+  border-right: 1px solid var(--glass-border);
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 1040;
+  transition: transform .3s ease;
+  overflow-y: auto;
+}
+.sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-w))); }
+.sidebar-brand {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  color: var(--muted);
+  border-left: 3px solid transparent;
+}
+.sidebar-nav a:hover, .sidebar-nav a.active {
+  color: var(--gold);
+  background: var(--gold-dim);
+  border-left-color: var(--gold);
+}
+.main-panel {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  transition: margin .3s;
+  min-width: 0;
+}
+.main-panel.expanded { margin-left: 0; }
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(18,18,18,0.7);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.content-area { padding: 1.5rem; }
+
+.stat-card { padding: 1.25rem 1.5rem; }
+.stat-card .stat-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.stat-card .stat-label { color: var(--muted); font-size: 0.85rem; }
+
+.table-dark-wave {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  --bs-table-border-color: var(--glass-border);
+  --bs-table-striped-bg: rgba(255,255,255,0.03);
+}
+.badge-gold {
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-weight: 500;
+}
+.badge-status-Pending { background: #f39c1222; color: #f39c12; }
+.badge-status-Confirmed { background: #3498db22; color: #3498db; }
+.badge-status-Completed { background: #2ecc7122; color: #2ecc71; }
+.badge-status-Cancelled { background: #e74c3c22; color: #e74c3c; }
+
+.footer-wave {
+  border-top: 1px solid var(--glass-border);
+  padding: 3rem 0 1.5rem;
+  margin-top: 3rem;
+  color: var(--muted);
+}
+.footer-wave h5 { color: var(--gold); font-family: var(--font-display); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.gallery-item {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, #1a1a1a, #2a2418);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  transition: transform .3s;
+}
+.gallery-item:hover { transform: scale(1.02); }
+
+.alert-wave {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  border-radius: 10px;
+}
+
+.page-header {
+  padding: 4rem 0 2rem;
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 2rem;
+}
+.filter-pills .btn {
+  margin: 0.25rem;
+  border-radius: 999px;
+  border-color: var(--glass-border);
+  color: var(--muted);
+}
+.filter-pills .btn.active, .filter-pills .btn:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.tier-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+.tier-Diamond { background: linear-gradient(135deg, #b9f2ff33, #D4AF3733); }
+.tier-Platinum { background: #e5e4e233; }
+.tier-Gold { background: var(--gold-dim); }
+
+@media (max-width: 991px) {
+  .sidebar { transform: translateX(calc(-1 * var(--sidebar-w))); }
+  .sidebar.show { transform: translateX(0); }
+  .main-panel { margin-left: 0; }
+  .hero { min-height: 80vh; padding: 4rem 0; }
+}
+
+/* ==========================================
+   CINEMATIC GOLD LOGO SPLASH SCREEN & MOVIE
+   ========================================== */
+#waveSplash {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 999999;
+  background: radial-gradient(circle at center, #1e1910 0%, #0c0c0c 70%, #050505 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1), transform 0.8s ease;
+  overflow: hidden;
+}
+
+#waveSplash.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.04);
+}
+
+.splash-container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+.splash-logo-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(212, 175, 55, 0.4);
+  animation: splashSpin 12s linear infinite;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+.splash-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 212, 139, 0.6);
+  animation: splashSpinReverse 8s linear infinite;
+}
+
+.splash-svg {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  z-index: 3;
+}
+
+.splash-wave-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: splashDraw 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.splash-brand-title {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  background: linear-gradient(135deg, #FFF3B0 0%, #D4AF37 40%, #AA7C11 70%, #FFE57F 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: splashGoldShimmer 3s linear infinite, splashFadeUp 1s ease 0.3s both;
+  filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3));
+}
+
+.splash-tagline {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  animation: splashFadeUp 1s ease 0.6s both;
+}
+
+.splash-progress-bar {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.splash-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #b8942d, #E8D48B, #D4AF37);
+  box-shadow: 0 0 10px #D4AF37;
+  animation: splashProgress 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.splash-skip-btn {
+  margin-top: 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  padding: 4px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  animation: splashFadeUp 1s ease 0.9s both;
+}
+.splash-skip-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+@keyframes splashSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes splashSpinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes splashDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes splashGoldShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes splashFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splashProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
