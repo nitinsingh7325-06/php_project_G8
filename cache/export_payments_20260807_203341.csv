@@ -1,0 +1,8 @@
+ID,Customer,Amount,Method,Status,"Paid At"
+7,"Salon Admin",499.00,UPI,Pending,
+6,"nitin singh",549.00,Card,Pending,
+5,"Neel Joshi",1999.00,Card,Paid,"2026-07-28 10:57:04"
+4,"Rohan Kapoor",999.00,Cash,Paid,"2026-07-26 10:57:04"
+3,"Rohan Kapoor",1999.00,UPI,Paid,"2026-06-08 10:57:04"
+2,"Demo Customer",1099.00,Card,Paid,"2026-07-18 10:57:04"
+1,"Demo Customer",599.00,UPI,Paid,"2026-06-23 10:57:04"
