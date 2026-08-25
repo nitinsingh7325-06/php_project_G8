@@ -1,7 +1,16 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Route static assets seamlessly to public directory
+    RewriteRule ^assets/(.*)$ public/assets/$1 [L]
+    RewriteRule ^uploads/(.*)$ public/uploads/$1 [L]
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
+
+    # Send all non-file/non-directory requests to root front controller
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
