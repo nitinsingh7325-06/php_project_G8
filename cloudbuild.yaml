@@ -1,0 +1,51 @@
+# Cloud Build CI/CD — build & deploy to Cloud Run
+substitutions:
+  _SERVICE: wave-salon
+  _REGION: asia-south1
+  _REPO: wave-salon
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
+      - .
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - --region=${_REGION}
+      - --platform=managed
+      - --allow-unauthenticated
+      - --memory=1Gi
+      - --cpu=1
+      - --min-instances=0
+      - --max-instances=20
+      - --concurrency=80
+      - --set-secrets=DB_PASSWORD=wave-db-password:latest,TWILIO_TOKEN=wave-twilio-token:latest,STRIPE_SECRET_KEY=wave-stripe-secret:latest,APP_KEY=wave-app-key:latest
+      - --set-env-vars=APP_ENV=production,APP_DEBUG=false,USE_CLOUD_STORAGE=true,USE_REDIS=true
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: 1200s
