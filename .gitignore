@@ -1,0 +1,53 @@
+# Environment
+.env
+.env.local
+.env.production
+
+# Dependencies
+/vendor/
+/node_modules/
+/composer.lock
+/package-lock.json
+
+# Logs
+*.log
+/storage/logs/*.log
+!/storage/logs/.gitkeep
+
+# Cache
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+/storage/framework/testing/
+
+# Uploads
+/public/uploads/
+/public/assets/images/gallery/
+/public/assets/images/avatars/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build
+/build/
+/dist/
+
+# Temporary files
+/tmp/
+/temp/
+
+# Coverage
+/coverage/
+/.phpunit.result.cache
+
+# Security
+*.pem
+*.key
+*.crt
+*.p12
